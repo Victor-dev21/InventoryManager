@@ -1,0 +1,16 @@
+<h1><%=@product.name%></h1>
+<hr>
+<table class="table">
+  <tr>
+  <th>Location</th>
+  <th>Quantity</th>
+  <th>Category</th>
+  <th>Price</th>
+</tr>
+  <tr>
+  <td><%=@product.location.name%></td>
+  <td><%=@product.quantity%></td>
+  <td><%=@product.category.name%></td>
+  <td>$<%=@product.price%></td>
+  </tr>
+</table>

@@ -1,0 +1,32 @@
+<h1>Welcome <%=@user.username%></h1>
+<h3>Inventory</h3>
+
+<br>
+<%= form_tag "/home", :method => 'get' do %>
+Filter: <%=select_tag "category_id",options_for_select(Category.all.map{|c|[c.name,c.id]}), {:prompt => 'All'}%>
+<%=select_tag "location_id",options_for_select(Location.all.map{|l|[l.name,l.id]}), {:prompt => 'All'}%>
+  <%= submit_tag "Search" %>
+<%end%>
+
+<table class="table">
+  <tr>
+  <th>Name</th>
+  <th>Location</th>
+  <th>Quantity</th>
+  <th>Category</th>
+  <th>Price</th>
+  <th>Barcode</th>
+
+</tr>
+<%@products.each do |product|%>
+  <tr>
+  <td><%= link_to product.name,product_path(product) %></td>
+  <td><%=product.location.name%></td>
+  <td><%=product.quantity%></td>
+  <td><%=product.category.name%></td>
+  <td>$<%=product.price%></td>
+  <td><%=image_tag("/assets/#{product.name}.png", height: 100)%></td>
+  </tr>
+<%end%>
+</table>
+<%=link_to "Add new product", new_product_path%>
