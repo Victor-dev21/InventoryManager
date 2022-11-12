@@ -21,22 +21,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    qrcode = RQRCode::QRCode.new("http://192.168.1.183:3000/home")
-
-  # NOTE: showing with default options specified explicitly
-  @png = qrcode.as_png(
-    bit_depth: 1,
-    border_modules: 4,
-    color_mode: ChunkyPNG::COLOR_GRAYSCALE,
-    color: "black",
-    file: nil,
-    fill: "white",
-    module_px_size: 6,
-    resize_exactly_to: false,
-    resize_gte_to: false,
-    size: 120
-  )
-  #IO.binwrite("/Users/vb/inventory_app/app/assets/images/test3.png", @png.to_s)
     @user = User.find(session[:user_id])
     @products = Product.filter_products(params,@user)
     render :'users/home'

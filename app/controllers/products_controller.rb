@@ -26,12 +26,23 @@ class ProductsController < ApplicationController
     end
     @product.save
     @user.products << @product
+    binding.pry
     Product.create_product_qr_code(@product)
     redirect_to homepage_path
   end
 
   def show
-    @product = Product.find(params[:id])
+    puts params
+    if  !params[:product].nil?
+      @product = Product.where("name LIKE ?", params[:product][:name]).first
+    else
+      @product = Product.find(params[:id])
+    end
+
+  end
+
+  def search
+
   end
 
   def edit

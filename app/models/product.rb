@@ -47,4 +47,5 @@ class Product < ApplicationRecord
   def self.display_qr_code(product)
     image_tag("/assets/#{product.name}.png", height: 50)
   end
+
 end

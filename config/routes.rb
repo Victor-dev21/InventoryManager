@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :users
   get '/', to: 'users#new', as: 'signup'
   get '/home', to: 'users#show', as: 'homepage'
+  get '/search', to: 'products#show'
   resources :products
 end
