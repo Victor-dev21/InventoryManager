@@ -3,6 +3,7 @@
 <h3>Inventory</h3>
 
 <br>
+
 <%= form_tag "/home", :method => 'get' do %>
 Filter: <%=select_tag "category_id",options_for_select(Category.all.map{|c|[c.name,c.id]}), {:prompt => 'All'}%>
 <%=select_tag "location_id",options_for_select(Location.all.map{|l|[l.name,l.id]}), {:prompt => 'All'}%>

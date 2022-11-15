@@ -23,13 +23,18 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex" role="search" action="/signout" mathod="GET">
+      <form class="d-flex" action="/logout" mathod="GET">
         <button class="btn btn-outline-success" type="submit">signout</button>
       </form>
+
       <form class="d-flex" role="search" action="/search" mathod="GET">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="product[name]">
         <button class="btn btn-outline-success" type="submit">Search</button>
+        <%if flash.any?%>
+          <%=flash.now[:notice]%>
+        <%end%>
       </form>
+
     </div>
   </div>
 </nav>

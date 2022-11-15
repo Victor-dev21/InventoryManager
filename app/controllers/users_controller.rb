@@ -22,14 +22,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    @products = Product.filter_products(params,@user)
-    render :'users/home'
+      @products = Product.filter_products(params,@user)
+      render :'users/home'
+
   end
+
 
 
 private
 def user_params
-  params.require(:user).permit(:username,:password)
-end
+    params.require(:user).permit(:username, :password)
+  end
 
 end
