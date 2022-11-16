@@ -1,5 +1,6 @@
 require 'pry'
 class ProductsController < ApplicationController
+  layout "navigation", only:[:show] # Don't render a layout
 
   def index
     @products = Product.all

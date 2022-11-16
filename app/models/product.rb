@@ -2,7 +2,8 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :user
   belongs_to :location
-
+  belongs_to :customer_products
+  has_many :customers, through: :customer_products
 
   def self.filter_products(params,user)
     if params[:category_id].nil?

@@ -1,0 +1,28 @@
+  <h2>Log in</h2>
+  <div class="container">
+      <div class="position-absolute top-0 end-0">
+ <form class="d-flex" action="/customer_login" mathod="GET">
+     <button type="submit">Customer Log In</button>
+ </form>
+ </div>
+ </div>
+  <br>
+  <%= form_for @user , url: '/login' do |f| %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h5>Errors:</h5>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%=f.label :username%> <%=f.text_field :username%><br>
+<%=f.label :password%> <%=f.text_field :password%><br>
+  <%= f.submit "Submit" %>
+<% end %>
+<form class="d-flex" action="/signup" mathod="GET">
+  <button type="submit">Signup</button>
+</form>

@@ -1,0 +1,22 @@
+<h2>Customer Log in</h2>
+
+<br>
+<%= form_for @customer , url: '/customer_login' do |f| %>
+<% if @customer.errors.any? %>
+<div id="error_explanation">
+  <h5>Errors:</h5>
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%=f.label :username%> <%=f.text_field :username%><br>
+<%=f.label :password%> <%=f.text_field :password%><br>
+<%= f.submit "Submit" %>
+<% end %>
+<form class="d-flex" action="/customer_signup" mathod="GET">
+<button type="submit">Signup</button>
+</form>
