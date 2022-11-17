@@ -1,0 +1,29 @@
+<h3>Cart</h3>
+<table class="table">
+  <tr>
+  <th>Name</th>
+  <th>Quantity</th>
+  <th>Category</th>
+  <th>Price</th>
+  <th>Sub-total</th>
+</tr>
+<%if !session.keys.include?("cart")%>
+<h4>Cart is empty</h4>
+<%else%>
+<%= form_for(:order, :url => orders_path) do |f| %>
+<%session[:cart].each do |product|%>
+<tr>
+<td><%=product["product"]["name"]%></td>
+<td><%=product["quantity"]%></td>
+<td><%=Category.find(product["product"]["category_id"]).name%></td>
+<td>$<%=product["product"]["price"]%></td>
+<td>$<%=product["product"]["price"] * product["quantity"].to_i%></td>
+</tr>
+
+<%end%>
+</table>
+<%= hidden_field_tag 'customer', @customer.id%>
+
+<%= f.submit "Place order" %>
+<%end%>
+<%end%>

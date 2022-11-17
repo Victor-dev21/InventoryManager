@@ -6,16 +6,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-  #  binding.pry
-    if params.keys.include?(:customer)
+    if params.keys.include?("customer")
       @customer = Customer.find_by(username:params[:customer][:username])
       if @customer && @customer.authenticate(params[:customer][:password])
         session[:customer_id] = @customer.id
-        redirect_to customer_path(@customer)
+        redirect_to customers_path
       else
         redirect_to customer_login_path
       end
-    elsif params.keys.include?(:user)
+    elsif params.keys.include?("user")
       @user = User.find_by(username: params[:user][:username])
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id

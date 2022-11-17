@@ -1,0 +1,23 @@
+<h3>My orders</h3>
+<table class="table">
+  <tr>
+  <th>Name</th>
+  <th>Category</th>
+  <th>Quantity</th>
+  <th>Price</th>
+  <th>orderID</th>
+
+</tr>
+
+<%@customer.orders.each do |order|%>
+<%order.products.each do |product|%>
+<tr>
+<td><%=product.name%></td>
+<td><%=product.category.name%></td>
+<td><%=ProductsOrder.where(product:product,order:order).first.quantity%></td>
+<td>$<%=product.price%></td>
+<td><%=order.id%></td>
+</tr>
+<%end%>
+<%end%>
+</table>

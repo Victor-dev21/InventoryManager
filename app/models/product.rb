@@ -2,8 +2,10 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :user
   belongs_to :location
-  belongs_to :customer_products
-  has_many :customers, through: :customer_products
+  has_many :products_orders
+  has_many :orders, through: :products_orders
+
+
 
   def self.filter_products(params,user)
     if params[:category_id].nil?
@@ -23,8 +25,6 @@ class Product < ApplicationRecord
     end
     @products
   end
-
-
 
   def self.create_product_qr_code(product)
   #  binding.pry

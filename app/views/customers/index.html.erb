@@ -1,1 +1,24 @@
-<h1>Your current order</h1>
+<h1>All Products</h1>
+<table class="table">
+  <tr>
+  <th>Name</th>
+  <th>Category</th>
+  <th>Price</th>
+  <th>QTY</th>
+
+</tr>
+<%Product.all.each do |product|%>
+  <tr>
+  <td><%=product.name%></td>
+  <td><%=product.category.name%></td>
+  <td>$<%=product.price%></td>
+  <td>
+    <form class="d-flex" role="search" action="/customer_cart" mathod="GET">
+      <input type="hidden" name="product_id" value="<%=product.id%>">
+      <input  name="qty" type="text">
+      <button class="btn btn-outline-success" type="submit">Add to cart</button>
+    </form>
+  </td>
+  </tr>
+<%end%>
+</table>
